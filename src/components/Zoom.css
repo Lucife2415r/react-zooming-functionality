@@ -1,30 +1,24 @@
 .container {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     overflow: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f5f5f5;
     position: relative;
 }
 
 .content {
-    width: 1000px;
-    height: 80vh;
-    background: #e0e0e0;
     transition: transform 0.2s ease-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    will-change: transform;
 }
 
 .content-box {
-    padding: 20px;
-    font-size: 18px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    padding: 40px;
+    background-color: #f0f0f0;
+    margin: 100px auto;
+    width: 400px;
+    text-align: center;
+    border-radius: 8px;
 }
+
 
 .Zoombutton {
     position: fixed;

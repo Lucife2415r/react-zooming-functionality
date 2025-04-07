@@ -21,18 +21,24 @@ const Zoom = () => {
 
     const adjustZoom = (step, clientX, clientY) => {
         const newZoom = Math.min(Math.max(min, zoom + step), max);
-        if (containerRef.current) {
-            const rect = containerRef.current.getBoundingClientRect();
-            const offsetX = clientX ? clientX - rect.left : rect.width / 2;
-            const offsetY = clientY ? clientY - rect.top : rect.height / 2;
 
-            setTransform({
-                x: `${(offsetX / rect.width) * 100}%`,
-                y: `${(offsetY / rect.height) * 100}%`,
-            });
+        if (containerRef.current && clientX != null && clientY != null) {
+            const rect = containerRef.current.getBoundingClientRect();
+
+            const offsetX = clientX - rect.left;
+            const offsetY = clientY - rect.top;
+
+            const originX = (offsetX / rect.width) * 100;
+            const originY = (offsetY / rect.height) * 100;
+
+            setTransform({ x: `${originX}%`, y: `${originY}%` });
+        } else {
+            setTransform({ x: '50%', y: '50%' });
         }
+
         setZoom(newZoom);
     };
+
 
     useEffect(() => {
         const container = containerRef.current;
